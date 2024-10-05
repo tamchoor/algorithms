@@ -5,30 +5,24 @@ namespace MyBinarySearch
 
 	int binarySearch(vector<int> &nums, int target)
 	{
-		unsigned long left = 0;
-		unsigned long right = nums.size();
+		int left = 0;
+		int right = int(nums.size() - 1);
 
-		while (left < right)
+		while (left <= right)
 		{
-			unsigned long mid = left + (right - left) / 2;
-			if (nums[mid] <= target)
+			int mid = left + (right - left) / 2;
+			if (nums[size_t(mid)] == target){
+				return int(mid);
+			} else if (nums[size_t(mid)] < target)
 			{
 				left = mid + 1;
 			}
 			else
 			{
-				right = mid;
+				right = mid - 1;
 			}
 		}
-
-		if (left > 0 && nums[left - 1] == target)
-		{
-			return int(left - 1);
-		}
-		else
-		{
-			return -1;
-		}
+		return -1;
 	}
 
 } // MyBinarySearch
